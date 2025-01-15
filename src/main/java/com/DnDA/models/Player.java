@@ -2,7 +2,7 @@ package com.DnDA.models;
 
 
 import com.DnDA.enums.Role;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +15,20 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name="players")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private long id;
+    @Column(name="username")
     private String username;
+    @Column(name="password")
     private String password;
+    @Column(name="email")
+    private String email;
+    @Column(name="game_room_ids")
     private List<Long> gameRoomIds;
+    @Column(name="role")
     private Role role = Role.USER;
 }
