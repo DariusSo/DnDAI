@@ -23,8 +23,8 @@ public class CharacterController {
     }
 
     @PutMapping
-    public Character updateCharacter(@RequestBody Character character, @RequestParam long id){
-        return characterService.updateCharacter(id, character);
+    public void updateCharacter(@RequestBody Character character, @RequestParam long id){
+        characterService.updateCharacter(id, character);
     }
 
     @DeleteMapping

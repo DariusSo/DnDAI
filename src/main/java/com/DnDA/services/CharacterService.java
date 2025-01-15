@@ -22,25 +22,9 @@ public class CharacterService {
         return characterRepository.findById(id)
                 .orElseThrow(CharacterNotFoundException::new);
     }
-    @Transactional
-    public Character updateCharacter(long id, Character updatedCharacter){
-        return characterRepository.findById(id)
-                .map(existingCharacter -> {
-                    existingCharacter.setName(updatedCharacter.getName());
-                    existingCharacter.setClassType(updatedCharacter.getClassType());
-                    existingCharacter.setLevel(updatedCharacter.getLevel());
-                    existingCharacter.setStrength(updatedCharacter.getStrength());
-                    existingCharacter.setDexterity(updatedCharacter.getDexterity());
-                    existingCharacter.setConstitution(updatedCharacter.getConstitution());
-                    existingCharacter.setCharisma(updatedCharacter.getCharisma());
-                    existingCharacter.setWisdom(updatedCharacter.getWisdom());
-                    existingCharacter.setIntelligence(updatedCharacter.getIntelligence());
-                    existingCharacter.setInventory(updatedCharacter.getInventory());
-                    existingCharacter.setImage(updatedCharacter.getImage());
-                    existingCharacter.setStatus(updatedCharacter.getStatus());
-                    return characterRepository.save(existingCharacter);
-                })
-                .orElseThrow(CharacterNotFoundException::new);
+
+    public void updateCharacter(long id, Character updatedCharacter){
+        characterRepository.save(updatedCharacter);
     }
 
     @Transactional

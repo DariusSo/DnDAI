@@ -16,21 +16,16 @@ public class PlayerService {
     public void savePlayer(Player player){
         playerRepository.save(player);
     }
+
     public Player getPlayer(long id){
         return playerRepository.findById(id)
                 .orElseThrow(PlayerNotFoundException::new);
     }
-    @Transactional
-    public Player updatePlayer(long id, Player updatedPlayerData) {
-        return playerRepository.findById(id)
-                .map(existingPlayer -> {
-                    existingPlayer.setUsername(updatedPlayerData.getUsername());
-                    existingPlayer.setEmail(updatedPlayerData.getEmail());
-                    existingPlayer.setGameRoomIds(updatedPlayerData.getGameRoomIds());
-                    return playerRepository.save(existingPlayer);
-                })
-                .orElseThrow(PlayerNotFoundException::new);
+
+    public void updatePlayer(Player updatedPlayerData) {
+        playerRepository.save(updatedPlayerData);
     }
+
     public void deletePlayer(long id) {
         Player player = playerRepository.findById(id)
                 .orElseThrow(PlayerNotFoundException::new);
