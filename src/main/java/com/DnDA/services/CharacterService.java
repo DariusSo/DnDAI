@@ -42,6 +42,8 @@ public class CharacterService {
                 })
                 .orElseThrow(CharacterNotFoundException::new);
     }
+
+    @Transactional
     public void deleteCharacter(long id){
         Character character = characterRepository.findById(id)
                 .orElseThrow(CharacterNotFoundException::new);
