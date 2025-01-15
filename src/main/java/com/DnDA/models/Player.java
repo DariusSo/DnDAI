@@ -30,5 +30,17 @@ public class Player {
     @Column(name="game_room_ids")
     private List<Long> gameRoomIds;
     @Column(name="role")
-    private Role role = Role.USER;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }

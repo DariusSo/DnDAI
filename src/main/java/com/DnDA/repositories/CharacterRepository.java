@@ -2,6 +2,8 @@ package com.DnDA.repositories;
 
 import com.DnDA.models.Character;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CharacterRepository extends JpaRepository<Character, Integer> {
+@Repository
+public interface CharacterRepository extends JpaRepository<Character, Long> {
 }
