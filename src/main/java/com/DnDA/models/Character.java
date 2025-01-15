@@ -27,5 +27,6 @@ public class Character {
     private int charisma;
     private List<Long> inventory;
     private String status;
+    private String image;
     private long playerId;
 }
