@@ -64,6 +64,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(HttpMethod.POST, "/player").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/player/login").permitAll()
 
         )       .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()))
                 .userDetailsService(jpaUserDetailsService);
