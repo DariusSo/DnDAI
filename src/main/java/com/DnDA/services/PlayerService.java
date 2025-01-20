@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class PlayerService {
 
@@ -19,12 +21,12 @@ public class PlayerService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void registration(Player player){
-
         playerRepository.findByEmail(player.getEmail())
                 .ifPresent(existingPlayer -> {
                     throw new PlayerAlreadyExistsException();
                 });
         player.setRole("ROLE_USER");
+        player.setGameRoomIds(new ArrayList<>());
         player.setPassword(bCryptPasswordEncoder.encode(player.getPassword()));
         System.out.println(player);
         playerRepository.save(player);
